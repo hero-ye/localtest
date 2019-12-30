@@ -1,9 +1,9 @@
-package com.hero.rest;
+package com.hero.lamda.rest;
 
-import com.hero.entity.Employee;
-import com.hero.service.FilterEmployeeByAge;
-import com.hero.service.FilterEmployeeBySalary;
-import com.hero.service.MyPredicateService;
+import com.hero.lamda.entity.Employee;
+import com.hero.lamda.service.FilterEmployeeByAge;
+import com.hero.lamda.service.FilterEmployeeBySalary;
+import com.hero.lamda.service.MyPredicateService;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,7 +15,7 @@ import java.util.*;
  * @Date 2019/12/29
  */
 @SpringBootTest
-public class LocaltestRest {
+public class LamdaRest01 {
 
     /**
      * 原来的匿名内部类：比较两个Integer的大小
@@ -92,7 +92,7 @@ public class LocaltestRest {
 
     /**
      * 问题：通过上面两个例子可以看出每新增一个需求，就要新建一个对应的方法，而这些方法大部分相同，只需要改动“if”条件，代码大量冗余
-     * 优化一：策略设计模式
+     * 优化方式一：策略设计模式
      * 1、写一个接口，返回值为boolean类型，参数为一个泛型
      * 2、写一个类，实现上一个接口，在类里面写一个方法，根据需求在方法中做业务判断
      * 3、写一个公共方法，在该方法的if条件处调用上一个方法即可
@@ -120,6 +120,49 @@ public class LocaltestRest {
             }
         }
         return employeeList;
+    }
+
+    /**
+     * 优化方式二：匿名内部类
+     */
+    @Test
+    public void test06(){
+        List<Employee> employeeList = filterEmployee(employees, new MyPredicateService<Employee>() {
+            @Override
+            public boolean test(Employee employee) {
+                return employee.getSalary() <= 5000;
+            }
+        });
+        for (Employee employee : employeeList) {
+            System.out.println(employee);
+        }
+    }
+
+    /**
+     * 优化方式三：Lambda表达式
+     */
+    @Test
+    public void test07(){
+        List<Employee> employeeList = filterEmployee(employees, (e) -> e.getSalary() <= 5000);
+        employeeList.forEach(System.out::println);
+    }
+
+    /**
+     * 优化方式四：Stream API
+     */
+    @Test
+    public void test08(){
+        //获取工资小于5000的员工的信息
+        employees.stream()
+                .filter((e) -> e.getSalary() <= 5000)
+                .forEach(System.out::println);
+
+        System.out.println("---------------------------------");
+
+        //获取所有员工的姓名
+        employees.stream()
+                .map(Employee::getName)
+                .forEach(System.out::println);
     }
 
 }
