@@ -1,6 +1,6 @@
-package com.hero.service;
+package com.hero.lamda.service;
 
-import com.hero.entity.Employee;
+import com.hero.lamda.entity.Employee;
 
 /**
  * @Description 根据工资过滤员工

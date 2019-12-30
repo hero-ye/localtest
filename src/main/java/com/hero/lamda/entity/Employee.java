@@ -1,4 +1,4 @@
-package com.hero.entity;
+package com.hero.lamda.entity;
 
 import lombok.Data;
 
