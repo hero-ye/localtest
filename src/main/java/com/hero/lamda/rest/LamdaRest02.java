@@ -1,5 +1,6 @@
 package com.hero.lamda.rest;
 
+import com.hero.lamda.service.MyFunction;
 import org.junit.Test;
 
 import java.util.*;
@@ -39,6 +40,9 @@ import java.util.function.Consumer;
  * 总结：
  *      左右遇一括号省
  *      左侧推断类型省
+ *
+ * 二、Lambda表达式需要“函数式接口”的支持
+ * 函数式接口：接口中只有一个抽象方法的接口。 可以使用@FunctionalInterface 修饰，可以检查是否是函数式接口
  *
  */
 public class LamdaRest02 {
@@ -113,6 +117,19 @@ public class LamdaRest02 {
 
     public void show(Map<String, Integer> map){
 
+    }
+
+    /**
+     * 需求：对一个数进行运算
+     */
+    @Test
+    public void test06(){
+        Integer num = operation(100, (x) -> x * x);
+        System.out.println(num);
+    }
+
+    public Integer operation(Integer num, MyFunction myFunction){
+        return myFunction.getValue(num);
     }
 
 }
