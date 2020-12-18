@@ -2,26 +2,37 @@ package com.hero.utils;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * @Description
  * @Author yejx
  * @Date 2020/1/1
  */
-@SpringBootTest
+//@SpringBootTest
 public class Common {
 
     /**
-     * 生成32位主键ID
+     * 生成32位主键ID-纯数字
      */
     @Test
-    public void uuidPrimaryKey() {
+    public void randomPK() {
         for (int i = 0; i < 20; i++) {
             String randomNumeric = RandomStringUtils.randomNumeric(32);
             System.out.println(randomNumeric);
+        }
+    }
+
+    /**
+     * 生成32位主键ID-字母数字
+     */
+    @Test
+    public void uuidPK() {
+        for (int i = 0; i < 20; i++) {
+            String pk = UUID.randomUUID().toString().replaceAll("-", "");
+            System.out.println(pk);
         }
     }
 
