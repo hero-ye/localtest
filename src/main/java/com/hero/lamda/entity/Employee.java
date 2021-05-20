@@ -10,8 +10,8 @@ import lombok.Data;
 @Data
 public class Employee {
     private String name;
-    private int age;
-    private double salary;
+    private Integer age;
+    private Double salary;
 
     public Employee() {
     }
@@ -20,7 +20,7 @@ public class Employee {
         this.name = name;
     }
 
-    public Employee(String name, int age, double salary) {
+    public Employee(String name, Integer age, Double salary) {
         this.name = name;
         this.age = age;
         this.salary = salary;

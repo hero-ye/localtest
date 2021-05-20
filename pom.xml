@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.hero</groupId>
     <artifactId>localtest</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>localtest</name>
     <description>本地测试专用</description>
 
