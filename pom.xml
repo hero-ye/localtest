@@ -25,7 +25,7 @@
         <fastjson.version>1.2.58</fastjson.version>
         <druid.version>1.1.10</druid.version>
         <mybatis-plus-boot-starter.version>3.2.0</mybatis-plus-boot-starter.version>
-        <poi.version>4.1.0</poi.version>
+        <poi.version>4.1.1</poi.version>
         <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <jsch.version>0.1.29</jsch.version>
